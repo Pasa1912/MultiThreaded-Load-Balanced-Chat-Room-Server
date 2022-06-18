@@ -26,13 +26,8 @@ struct Client{
 	thread client_thread;
 };
 vector<Client> clients;
-
 string color(int code);
-void set_client_details(int id, char name[], char room[]);
-void server_print(string str, bool endLine);
-int broadcast_to_clients(string message, int sender_id, string sender_room);
-int broadcast_to_clients(int num, int sender_id, string sender_room);
-void end_connection(int id);
+
 void handle_client_connection(int client_socket, int id);
 
 int main(int argc, char *argv[])
@@ -110,10 +105,12 @@ void server_print(string str, bool endLine=true)
 	if(endLine) cout<<endl;
 }
 
-int broadcast_to_clients(string message, int sender_id, string sender_room){
+int broadcast_to_clients(string message, int sender_id, string sender_room)
+{
 	char temp[MAX_LEN];
 	strcpy(temp,message.c_str());
-	for(int i=0; i<clients.size(); i++){
+	for(int i=0; i<clients.size(); i++)
+	{
 		if(clients[i].client_id!=sender_id && clients[i].client_room == sender_room) 
 		{
 			send(clients[i].client_socket,temp,sizeof(temp),0);
@@ -122,15 +119,18 @@ int broadcast_to_clients(string message, int sender_id, string sender_room){
 	return 1;
 }
 
-int broadcast_to_clients(int num, int sender_id, string sender_room){
-	for(int i=0; i<clients.size(); i++){
+int broadcast_to_clients(int num, int sender_id, string sender_room)
+{
+	for(int i=0; i<clients.size(); i++)
+	{
 		if(clients[i].client_id!=sender_id && clients[i].client_room == sender_room) 
 		send(clients[i].client_socket,&num,sizeof(num),0);
 	}	
 	return 1;	
 }
 
-void end_connection(int id, string room){
+void end_connection(int id, string room)
+{
 	for(int i=0; i<clients.size(); i++)
 	{
 		if(clients[i].client_id == id && clients[i].client_room == room)
@@ -144,7 +144,8 @@ void end_connection(int id, string room){
 	}				
 }
 
-void handle_client_connection(int client_socket, int id){
+void handle_client_connection(int client_socket, int id)
+{
 	char name[MAX_LEN],room[MAX_LEN],str[MAX_LEN];
 	recv(client_socket,name,sizeof(name),0);
 	recv(client_socket,room,sizeof(room),0);
