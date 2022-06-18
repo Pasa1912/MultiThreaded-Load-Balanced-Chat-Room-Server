@@ -51,7 +51,7 @@ The Gradual  Working process of this project is as -
 
 This working can be explained using the below Connection Diagram - 
 
-<p align="center"><img src = "https://raw.githubusercontent.com/Pasa1912/MultiThreaded-Load-Balanced-Chat-Room-Server/main/img/ConnectionDiagram.png?token=GHSAT0AAAAAABU5Y2QLNKJU5FFTKVNUGJEUYVN3HNA"></p>
+<p align="center"><img src = "https://user-images.githubusercontent.com/67159796/174442113-5783e59b-93b8-4d80-9433-513ae44760ff.png"></p>
 
 ### Learnings 
 Gained practical experience in Socket Programming in C++ using Transmission Control Protocol, Load Balancing and Distribution Techniques and Multi-threading concepts. Learnt using mutex locks to prevent race conditions among different threads. 
